@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { GithubService } from './services/github.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly githubService: GithubService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('commits')
+  getHello(): Promise<any> {
+    return this.githubService.getLatestCommits('test');
   }
 }
