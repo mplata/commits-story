@@ -7,14 +7,14 @@ export class GithubService {
 
   constructor() {
     this.octokit = new Octokit({
-      auth: 'YOUR_PERSONAL_ACCESS_TOKEN',
+      auth: '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',
     });
   }
 
-  async getLatestCommits(repository: string): Promise<any> {
+  async getLatestCommits(repo: string): Promise<any> {
     const { data } = await this.octokit.repos.listCommits({
-      owner: 'OWNER',
-      repo: repository,
+      owner: 'mplata',
+      repo
     });
     return data;
   }

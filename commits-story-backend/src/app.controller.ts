@@ -7,6 +7,6 @@ export class AppController {
 
   @Get('commits')
   getHello(): Promise<any> {
-    return this.githubService.getLatestCommits('test');
+    return this.githubService.getLatestCommits('commits-story');
   }
 }
