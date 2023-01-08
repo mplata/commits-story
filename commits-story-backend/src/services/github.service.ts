@@ -1,19 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { Octokit } from '@octokit/rest';
 
 @Injectable()
 export class GithubService {
   private octokit: Octokit;
 
-  constructor() {
+  constructor(private configService: ConfigService) {
+    const auth = configService.get<string>('GITHUB_TOKEN');
     this.octokit = new Octokit({
-      auth: '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',
+      auth,
     });
   }
 
   async getLatestCommits(repo: string): Promise<any> {
+    const owner = this.configService.get<string>('GITHUB_USER');
     const { data } = await this.octokit.repos.listCommits({
-      owner: 'mplata',
+      owner,
       repo
     });
     return data;
