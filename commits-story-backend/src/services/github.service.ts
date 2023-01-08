@@ -7,7 +7,7 @@ export class GithubService {
 
   constructor() {
     this.octokit = new Octokit({
-      auth: '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',
+      auth: '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',
     });
   }
 
