@@ -21,4 +21,12 @@ export class GithubService {
     });
     return data;
   }
+
+  async getRepos(): Promise<any> {
+    const username = this.configService.get<string>('GITHUB_USER');
+    const { data } = await this.octokit.repos.listForUser({
+      username
+    });
+    return data;
+  }
 }
