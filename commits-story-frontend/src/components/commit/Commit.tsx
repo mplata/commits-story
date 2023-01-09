@@ -5,7 +5,6 @@ function CommitDisplay(props: {commit: CommitInfo } ) {
   const { commit } = props;
   const { author } = commit;
   const { author: commitAuthor } = commit.commit;
-  console.log(commitAuthor);
   return (
     <div className="w-100 shadow-lg m-4 rounded p-2 flex flex-row">
       <div className='m-4'>
